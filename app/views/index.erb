@@ -17,6 +17,15 @@
     <input type="text" class="form-control"name="name" id="name" placeholder="Enter name...">
   </div>
   
+  <label for="distance">Distance: </label>
+    <select class="form-control input-lg" name="distance" id="distance">
+
+    <% @distances.each do |d| %>
+      <option value="<%= d %>"><%= d %> km
+      </option>
+    <% end %>
+  </div>
+
   <input type="submit" class="btn btn-lg btn-primary clear-fix" value="Submit">
 
 </form>
