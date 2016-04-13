@@ -1,7 +1,7 @@
  <div class="col-md-12">
   <div class="col-md-7">
     <% @mentors_with_details.each do |mentor| %> 
-      <div class="row mentor-card">
+      <div class="row mentor-card" data-id="<%= mentor['_id'] %>" data-first-name="<%= mentor['first_name'] %>" data-last-name="<%= mentor['last_name'] %>" data-email = "<%= mentor['email'] %>" data-phone-number="<%= mentor['phone_number'] %>" data-twitter="<%= mentor['twitter'] %>" data-skype="<%= mentor['skype'] %>" data-slack="<%= mentor['slack'] %>" data-github-username="<%= mentor['github_username'] %>" data-avatar-url="<%= mentor['avatar_url'] %>" data-custom-avatar-url="<%= mentor['custom_avatar']['url'] %>" data-created-at="<%= mentor['created_at'] %>" data-admin="<%= mentor['admin'] %>" data-bio="<%= mentor['bio'] %>" data-on-duty="<%= mentor['on_duty'] %>" data-lat="<%= mentor['location'][0] %>" data-lng="<%= mentor['location'][1] %>">
         <div class="col-md-3 center">
           <img src="<%= mentor["avatar_url"] %>" class="card-avatar">
           <% if mentor["on_duty"] == true %>
@@ -10,7 +10,7 @@
             <span class="off-duty" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></span>
           <% end %>
           <div class="clearfix"></div>
-          <button class="btn btn-primary">View Profile</button>
+          <button class="btn btn-primary profile-btn">View Profile</button>
         </div>
 
 
@@ -42,25 +42,6 @@
     <% end %>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-5 mentor-displayed">
   <div class="row mentor-displayed-top">
     <div class="col-md-7 selected-mentor-name">
@@ -86,17 +67,17 @@
 
   <hr>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus earum quasi quod in, nihil dolorum mollitia aperiam magni enim! Aut numquam facere, odit. Dolorum earum, consequatur neque amet ipsum aliquam accusamus dolor quis deserunt necessitatibus nostrum nemo laborum optio saepe reiciendis quasi, a asperiores consequuntur ratione voluptatum quia officia blanditiis inventore. Saepe error, repudiandae voluptatem accusantium. Odit ducimus dolorum laudantium officiis unde saepe exercitationem, debitis reiciendis labore dolor rem nulla neque itaque dolore fugit animi magni non. Vitae, non maiores laborum doloremque exercitationem culpa ex, impedit tempora fugiat. Illo natus esse rerum fugiat neque ut, quaerat praesentium assumenda, odit laborum.</p>
+  <p class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus earum quasi quod in, nihil dolorum mollitia aperiam magni enim! Aut numquam facere, odit. Dolorum earum, consequatur neque amet ipsum aliquam accusamus dolor quis deserunt necessitatibus nostrum nemo laborum optio saepe reiciendis quasi, a asperiores consequuntur ratione voluptatum quia officia blanditiis inventore. Saepe error, repudiandae voluptatem accusantium. Odit ducimus dolorum laudantium officiis unde saepe exercitationem, debitis reiciendis labore dolor rem nulla neque itaque dolore fugit animi magni non. Vitae, non maiores laborum doloremque exercitationem culpa ex, impedit tempora fugiat. Illo natus esse rerum fugiat neque ut, quaerat praesentium assumenda, odit laborum.</p>
 
   <hr>
 
   <div id="contact-info">
-    <div class="col-md-7"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> don@lighthouselabs.ca</div>
-    <div class="col-md-5"><i class="fa fa-phone fa-lg" aria-hidden="true"></i> (250) 000 0000</div>
-    <div class="col-md-7"><i class="fa fa-github fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-5"><i class="fa fa-skype fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-7"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-5"><i class="fa fa-slack fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-7 email-div"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> <span class="email">don@lighthouselabs.ca</span></div>
+    <div class="col-md-5 phone-div"><i class="fa fa-phone fa-lg" aria-hidden="true"></i><span class="phone">(250) 000 0000</span></div>
+    <div class="col-md-7 github-div"><i class="fa fa-github fa-lg" aria-hidden="true"></i><span class="github">/donburks</span></div>
+    <div class="col-md-5 skype-div"><i class="fa fa-skype fa-lg" aria-hidden="true"></i><span class="skype">/donburks</span></div>
+    <div class="col-md-7 twitter-div"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i><span class="twitter"> /donburks</span></div>
+    <div class="col-md-5 slack-div"><i class="fa fa-slack fa-lg" aria-hidden="true"></i><span class="slack">/donburks</span></div>
     <div class="clearfix"></div>
   </div>
 
@@ -105,20 +86,5 @@
   <div id="map"></div>
 
   <div class="clearfix"></div>
-  <script>
-    function initMap() {
-      var myLatLng = {lat: 49.2827, lng: -123.1207};
 
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: myLatLng
-      });
-
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-      });
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"async defer></script>
 </div>

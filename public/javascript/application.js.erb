@@ -1,29 +1,92 @@
 $(function() {
-  
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
 
-  $('.mentor-card').on('click', '#profile-btn', function() {
+    var mentorDisplay = $('.mentor-displayed');
 
-    buildDetailsDiv();
-    $.ajax({
-      type: "GET",
-      url: "/mentor",
-      data: "",
-      success: function() {
-        
 
-      }
-    });
+    mentorDisplay.hide();
+
+    var mentorLat, mentorLng;
+
+
+  $('.mentor-card').on('click', '.profile-btn', function() {
+    var div = $(this).closest('.mentor-card');
+
+    var mentorName = div.attr('data-first-name') + ' ' + div.attr('data-last-name');
+    var mentorEmail = div.attr('data-email');
+    var mentorPhone = div.attr('data-phone-number');
+    var mentorTwitter = div.attr('data-twitter');
+    var mentorSkype = div.attr('data-skype');
+    var mentorSlack = div.attr('data-slack');
+    var mentorGithub = div.attr('data-github-username');
+    var mentorAvatar = div.attr('data-avatar-url');
+    var mentorCustomAvatar = div.attr('data-custom-avatar-url')
+    var mentorAdmin = div.attr('data-admin');
+    var mentorBio = div.attr('data-bio');
+    var mentorOnDuty = div.attr('data-on-duty');
+    var mentorlocation = div.attr('data-location');
+    var mentorSince = div.attr('data-created-at');
+    mentorLat = parseFloat(div.attr('data-lat'))
+    mentorLng = parseFloat(div.attr('data-lng'))
+
+    mentorDisplay.find('.mentor-name').text(mentorName);
+    mentorDisplay.find('.mentor-since').text("Mentor Since: " + mentorSince);
+    mentorDisplay.find('.bio').text(mentorBio);
+    mentorDisplay.find('.email').text(mentorEmail);
+    mentorDisplay.find('.phone').text(mentorPhone);
+    mentorDisplay.find('.github').text(mentorGithub);
+    mentorDisplay.find('.skype').text(mentorSkype);
+    mentorDisplay.find('.slack').text(mentorSlack);
+    mentorDisplay.find('.twitter').text(mentorTwitter);
+    mentorDisplay.find('.card-avatar').prop('src', mentorAvatar);
+
+    if (mentorAdmin == "false") {
+        mentorDisplay.find('label-success').hide();
+    }
+
+    if (mentorOnDuty == "false") {
+        mentorDisplay.find('label-primary').hide();
+    }
+
+    if (mentorEmail == "") {
+        mentorDisplay.find('.email-div').hide();
+    }
+
+    if (mentorPhone == "") {
+        mentorDisplay.find('.phone-div').hide();
+    }
+
+    if (mentorGithub == "") {
+        mentorDisplay.find('.github-div').hide();
+    }
+
+    if (mentorSkype == "") {
+     mentorDisplay.find('.skype-div').hide();
+    }
+
+    if (mentorSlack == "") {
+     mentorDisplay.find('.slack-div').hide();
+    }
+
+    if (mentorTwitter == "") {
+     mentorDisplay.find('.twitter-div').hide();
+    }
+
+    mentorDisplay.show();
+
+    initMap();
   });
 
+  function initMap() {
+      var myLatLng = {lat: mentorLat, lng: mentorLng};
 
-buildDetailsDiv = function() {
-  $('.mentor-displayed').append(
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: myLatLng
+      });
 
-
-};
-
-
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+      });
+    }
 });
