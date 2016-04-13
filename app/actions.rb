@@ -12,7 +12,7 @@ helpers do
 
   def set_search
     @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
-    @distances = [1, 5, 10, 25, 50]
+    @distances = ['Any', 1, 5, 10, 25, 50]
   end
 
   def api_call(url)
@@ -152,7 +152,7 @@ get '/search' do
   end
 
   #FILTER BY DISTANCE
-  if params["distance"].length > 0 
+  if params["distance"] != 'Any'
     @mentors = search_by_distance(params["distance"], @mentors, session)
   end
 
@@ -169,8 +169,12 @@ get '/search' do
       @mentors_with_details << @mentors[i]
       i += 1
     end
+    @mentors_with_details = get_mentor_details(@mentors_with_details)
   end
-  @mentors_with_details = get_mentor_details(@mentors_with_details)
+
+  @mentors_with_details = get_mentor_details(@mentors)
+  
+  # byebug
   
   puts @mentors_with_details
 
