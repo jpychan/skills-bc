@@ -1,12 +1,18 @@
 helpers do
   def set_user_location
-    session["location"] = {
-      lat: '49.246292',
-      lng: '-123.116226',
-      city: "Vancouver",
-      state: "BC"
-    }
-    puts session["location"]
+    if !session["location"]
+      session["location"] = {
+        lat: '49.246292',
+        lng: '-123.116226',
+        city: "Vancouver",
+        state: "BC"
+      }
+    end
+  end
+
+  def set_search
+    @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
+    @distances = [1, 5, 10, 25, 50]
   end
 
   def api_call(url)
@@ -64,7 +70,8 @@ helpers do
     end
   end
 
-  def search_by_distance(distance, mentors)
+  def search_by_distance(distance, mentors, session)
+    # byebug
     distance = params["distance"].to_i
     user_lat = session["location"][:lat]
     user_lng = session["location"][:lng]
@@ -94,22 +101,22 @@ end
 #ROUTES:
 #1. GET /mentors
 #2. GET /mentors/{id}
+
+before do
+  set_user_location
+  set_search
+end
+
 get '/static' do
   @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
-  # @distances = [['',''] ['1', '1 km'], ['5', '5 km'], ['10', '10 km'], ['25', '25 km'], ['50', '50 km']]
-
   @distances = [1, 5, 10, 25, 50]
   erb :search
 end
+
 get '/' do
 
  #Make API call to IP API to set default location
-  if !session["location"]
-    set_user_location
-  end
-
   @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
-  # @distances = [['',''] ['1', '1 km'], ['5', '5 km'], ['10', '10 km'], ['25', '25 km'], ['50', '50 km']]
 
   @distances = [1, 5, 10, 25, 50]
 
@@ -146,16 +153,24 @@ get '/search' do
 
   #FILTER BY DISTANCE
   if params["distance"].length > 0 
-    @mentors = search_by_distance(params["distance"], @mentors)
+    @mentors = search_by_distance(params["distance"], @mentors, session)
   end
 
   if @mentors.length == 0
     @error = "No mentor matched your search criteria, please try again."
   end
 
-  if @mentors.length > 0
-    @mentors_with_details = get_mentor_details(@mentors)
+  # byebug
+
+  if @mentors.length > 10
+    i = 0
+    @mentors_with_details = []
+    while i < 10
+      @mentors_with_details << @mentors[i]
+      i += 1
+    end
   end
+  @mentors_with_details = get_mentor_details(@mentors_with_details)
   
   puts @mentors_with_details
 
@@ -165,6 +180,8 @@ end
 
 
 get '/mentor' do
+
+  # erb :mentor_details, :layout => false
 
   #make API request to GET /mentors/{id}
 

@@ -27,6 +27,7 @@ configure do
   set :session_secret, ENV['SESSION_KEY'] || 'lighthouselabssecret'
 
   set :views, File.join(Sinatra::Application.root, "app", "views")
+  set :partial_template_engine, :erb
 end
 
 # Set up the database and models

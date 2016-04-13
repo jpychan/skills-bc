@@ -1,12 +1,25 @@
 $(function() {
 
   $('.mentor-card').on('click', '#profile-btn', function() {
+
+    buildDetailsDiv();
     $.ajax({
       type: "GET",
       url: "/mentor",
       data: "",
       success: function() {
-        console.log("ok");
+        
+
       }
+    });
   });
+
+
+buildDetailsDiv = function() {
+  $('.mentor-displayed').append(
+
+
+};
+
+
 });
