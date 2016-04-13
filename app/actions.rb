@@ -156,8 +156,6 @@ get '/search' do
   if @mentors.length > 0
     @mentors_with_details = get_mentor_details(@mentors)
   end
-
-  byebug
   
   puts @mentors_with_details
 
