@@ -84,10 +84,11 @@ hr {
 
 .mentor-displayed {
   border-left: 1px solid #eee;
-  min-height: 600px;
+  height: auto;
   right: 0;
-  position: fixed;
+  position: absolute;
   top: 100px;
+
 }
 
 /************ Buttons ************/
@@ -129,8 +130,34 @@ hr {
 
 /************ Label ************/
 
+#specialities img {
+  height: 30px;
+}
+
+#specialities .col-md-3 {
+  padding: 0;
+}
+
+#contact-info i {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.selected-mentor-name {
+  margin-top: 30px;
+}
+.mentor-displayed-top {
+  padding: 35px 0 5px 0;
+}
+
+/************ Label ************/
+
 .label-success {
     background-color: #7ac943;
+}
+
+.label-primary {
+    background-color: #0088ff;
 }
 
 .label {
