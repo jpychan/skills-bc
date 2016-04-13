@@ -1,11 +1,14 @@
  <div class="col-md-12">
-
   <div class="col-md-7">
     <% @mentors_with_details.each do |mentor| %> 
       <div class="row mentor-card">
         <div class="col-md-3 center">
           <img src="<%= mentor["avatar_url"] %>" class="card-avatar">
-          <span class="on-duty"></span>
+          <% if mentor["on_duty"] == true %>
+            <span class="on-duty"></span>
+          <% else %>
+            <span class="off-duty" data-toggle="tooltip" data-placement="left" title="Tooltip on left"></span>
+          <% end %>
           <div class="clearfix"></div>
           <button class="btn btn-primary">View Profile</button>
         </div>
@@ -17,14 +20,18 @@
             <% if mentor["admin"] %>
               <span class="label label-success">Admin</span>
             <% end %>
+          </p>          
+          <p class="mentor-since">
+            <% mentor["specialties"].each do |s| %>
+              <%= "#{s }" %>
+            <% end %>
           </p>
-          <p class="mentor-since">Mentor Since: <%= mentor["created_at"] %></p>
           <p class="mentor-bio"><%= mentor["bio"] %></p>
           <hr>
 
           <span class="contact">
             <% if mentor["email"] && mentor["email"].length > 0 %> 
-              <i class="fa fa-envelope-o" aria-hidden="true"></i><%= mentor["email"] %>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:<%= mentor["email"] %>?Subject=Hey%20<%= mentor["first_name"] %>" target="_top"><%= mentor["email"] %></a>
             <% end %>
             <% if mentor["phone_number"] && mentor["phone_number"].length > 0 %> 
               <i class="fa fa-phone" aria-hidden="true"></i> <%= mentor["phone_number"] %>
