@@ -26,54 +26,57 @@
   <title></title>
 </head>
 <body>
-  
+  <div class="container">
   <nav id="top-nav">    
     
     <form action="/search">
       <div class="row">
         
         <div class="col-md-4">
+          <img src="images/logo.svg" class="shake">
         </div>
-
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="specialty"></label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Search by name">
+        <div class="search-padding">
+          <div class="col-md-2">
+            <div class="form-group">
+              <!-- <label for="specialty"></label> -->
+              <input type="text" class="form-control" name="name" id="name" placeholder="Search by name">
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="specialty">Specialty </label>
-            <select class="form-control input-md" name="specialty" id="specialty">
-              <% @specialties.each do |s| %>
-                <option value="<%= s %>"><%= s %>
-                </option>
-              <% end %>
-            </select>
+          <div class="col-md-2">
+            <div class="form-group">
+              <!-- <label for="specialty">Specialty </label> -->
+              <select class="form-control input-md" name="specialty" id="specialty">
+                <% @specialties.each do |s| %>
+                  <option value="<%= s %>"><%= s %>
+                  </option>
+                <% end %>
+              </select>
+            </div>
           </div>
-        </div>
-        
-        <div class="col-md-2">
-          <div class="form-group">
-            <label for="distance">Distance </label>
-            <select class="form-control input-md" name="distance" id="distance">
-              <% @distances.each do |d| %>
-                <option value="<%= d %>"><%= d %> km
-                </option>
-              <% end %>
-            </select>
+          
+          <div class="col-md-2">
+            <div class="form-group">
+              <!-- <label for="distance">Distance </label> -->
+              <select class="form-control input-md" name="distance" id="distance">
+                <% @distances.each do |d| %>
+                  <option value="<%= d %>"><%= d %> km
+                  </option>
+                <% end %>
+              </select>
+            </div>
           </div>
-        </div>
 
-      <input type="submit" class="btn btn-primary" value="Submit">
-    </div>
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+    </div> <!-- /search-padding -->
   </form>
 </nav>
+</div>
 
-  <div id="sub-nav">
+<!--   <div id="sub-nav">
     
-  </div>
+  </div> -->
 
 <div class="clearfix"></div>
   

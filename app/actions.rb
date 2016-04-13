@@ -95,42 +95,18 @@ helpers do
 
 end
 
-# Homepage (Root path)
-
-#API LINK: http://skillsbc.vansortium.com
-#ROUTES:
-#1. GET /mentors
-#2. GET /mentors/{id}
-
 before do
   set_user_location
   set_search
 end
 
-get '/static' do
-
-  erb :search
-end
-
 get '/' do
-
- #Make API call to IP API to set default location
 
   erb :index
 end
 
 
 get '/search' do
-
-  #process search params
-
-  #make API call to get all mentors, get JSON back
-
-  #process json, filter the array of mentors by user's search param (name, location and specialties)
-
-  #spit that out to the user
-
-  #API CALL
 
   url = URI("http://skillsbc.vansortium.com/mentors")
 
