@@ -94,7 +94,9 @@ end
 #ROUTES:
 #1. GET /mentors
 #2. GET /mentors/{id}
-
+get '/static' do
+  erb :search
+end
 get '/' do
 
  #Make API call to IP API to set default location
