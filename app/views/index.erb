@@ -1,1 +1,22 @@
-<h1>Home Page</h1>
+<h1>Find your Mentor</h1>
+
+<form action="/search">
+  <div class="form-group">
+
+   <label for="specialty">Specialty: </label>
+      <select class="form-control input-lg" name="specialty" id="specialty">
+
+    <% @specialties.each do |s| %>
+      <option value="<%= s %>"><%= s %>
+      </option>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <label for="username">Name: </label>
+    <input type="text" class="form-control"name="name" id="name" placeholder="Enter name...">
+  </div>
+  
+  <input type="submit" class="btn btn-lg btn-primary clear-fix" value="Submit">
+
+</form>
