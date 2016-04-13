@@ -11,15 +11,22 @@ hr {
   border-top: 1px solid #eee;
 }
 
-nav {
+#top-nav {
+
   background-color: #dddcdd;
   height: 50px;
+}
+
+#sub-nav {
+  border-bottom: 1px solid #eee;
+  min-height: 50px;
   margin-bottom: 25px;
 }
 
 .mentor-card {
   border-bottom: 1px solid #eee;
   padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .center {
@@ -35,7 +42,11 @@ nav {
 }
 
 .on-duty {
-  background-color: #0088ff;
+  background-image: url(../images/active.svg); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   border: 4px solid white;
   height: 30px;
   width: 30px;
@@ -67,6 +78,16 @@ nav {
   position: absolute;
   margin-top: 10px;
   margin-left: 5px;
+}
+
+/************ Mentor Profile ************/
+
+.mentor-displayed {
+  border-left: 1px solid #eee;
+  min-height: 600px;
+  right: 0;
+  position: fixed;
+  top: 100px;
 }
 
 /************ Buttons ************/
