@@ -9,6 +9,21 @@ helpers do
     puts session["location"]
   end
 
+  def api_call(url)
+
+    http = Net::HTTP.new(url.host, url.port)
+
+    request = Net::HTTP::Get.new(url)
+    request["content-type"] = 'application/x-www-form-urlencoded'
+    request["accept"] = 'application/json'
+    request["cache-control"] = 'no-cache'
+
+    response = http.request(request)
+
+    JSON.parse(response.read_body)
+
+  end
+
   def to_radians(deg)   
     deg.to_f/180.0 * Math::PI
   end
@@ -40,6 +55,37 @@ helpers do
       end
     end
   end
+
+  def search_by_specialty(specialty, mentors)
+    mentors.select do |mentor|
+      mentor["specialties"].any? do
+        |specialty| specialty == params["specialty"]
+      end
+    end
+  end
+
+  def search_by_distance(distance, mentors)
+    distance = params["distance"].to_i
+    user_lat = session["location"][:lat]
+    user_lng = session["location"][:lng]
+
+    mentors = mentors.select do |result|
+      dist_km = calc_distance(user_lat, user_lng, result["location"][0], result["location"][1])
+      dist_km <= distance
+    end
+  end
+
+  def get_mentor_details(mentors)
+    @details = []
+    mentors.each do |mentor|
+      url = URI("http://skillsbc.vansortium.com/mentors/#{mentor['_id']}")
+      details = api_call(url)
+      @details << details
+    end
+
+    @details
+  end
+
 end
 
 # Homepage (Root path)
@@ -79,55 +125,35 @@ get '/search' do
 
   url = URI("http://skillsbc.vansortium.com/mentors")
 
-  http = Net::HTTP.new(url.host, url.port)
+  @mentors = api_call(url)
 
-  request = Net::HTTP::Get.new(url)
-  request["content-type"] = 'application/x-www-form-urlencoded'
-  request["accept"] = 'application/json'
-  request["cache-control"] = 'no-cache'
-
-  response = http.request(request)
-
-  mentors = response.read_body
-
-  mentors = JSON.parse(mentors)
-
-  #Filter mentors by params
-  byebug
+  #Filter @mentors by params
   if params["name"].length > 0
-
-    @results = search_by_name(params["name"].downcase, mentors)
+    @mentors = search_by_name(params["name"].downcase, @mentors)
   end
-  byebug
-  puts @results.length
 
   #FILTER BY SPECIALTY
 
   if params["specialty"].length > 0
-    @results = mentors.select do |mentor|
-      mentor["specialties"].any? do
-        |specialty| specialty == params["specialty"]
-      end
-    end
+    @mentors = search_by_specialty(params["specialty"], @mentors)
   end
 
   #FILTER BY DISTANCE
   if params["distance"].length > 0 
-    distance = params["distance"].to_i
-    user_lat = session["location"][:lat]
-    user_lng = session["location"][:lng]
-
-    @results = mentors.select do |result|
-      dist_km = calc_distance(user_lat, user_lng, result["location"][0], result["location"][1])
-      dist_km <= distance
-    end
-
-  @results
-  erb :search
-
+    @mentors = search_by_distance(params["distance"], @mentors)
   end
 
-  puts @results.length
+  if @mentors.length == 0
+    @error = "No mentor matched your search criteria, please try again."
+  end
+
+  if @mentors.length > 0
+    @mentors_with_details = get_mentor_details(@mentors)
+  end
+
+  puts @mentors_with_details
+
+  erb :search
 
 end
 
