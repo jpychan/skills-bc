@@ -157,6 +157,8 @@ get '/search' do
     @mentors_with_details = get_mentor_details(@mentors)
   end
 
+  byebug
+  
   puts @mentors_with_details
 
   erb :search

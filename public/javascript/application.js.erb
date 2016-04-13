@@ -1,0 +1,12 @@
+$(function() {
+
+  $('.mentor-card').on('click', '#profile-btn', function() {
+    $.ajax({
+      type: "GET",
+      url: "/mentor",
+      data: "",
+      success: function() {
+        console.log("ok");
+      }
+  });
+});
