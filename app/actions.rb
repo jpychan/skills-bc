@@ -10,6 +10,11 @@ helpers do
     end
   end
 
+  def set_search
+    @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
+    @distances = [1, 5, 10, 25, 50]
+  end
+
   def api_call(url)
 
     http = Net::HTTP.new(url.host, url.port)
@@ -99,11 +104,15 @@ end
 
 before do
   set_user_location
+  set_search
 end
 
 get '/static' do
+  @specialties = ["", "Python", "JavaScript", "Rails", "React", "Ember", "Angular", "Backbone", "Phonegap", "jQuery", "iOS", "Java", "Ruby", "PHP", "NodeJS", "Linux", "CoffeeScript", "Bash", "SQL", "Vim", "QBasic", "CSS", "Clojure(script)", "UX", "Game development", "LEMP", "HTML", "Sinatra", "Sass", "C/C++", "Meteor", "Lisp", "Beer", "Functional Programming", "NoSQL", "Algorithms", "Mongo", "Devops", "Assembler", "Pascal", "Fortran", "Cobol", "Basic", "Visual Basic", "MongoDB", "Express", "C#", ".Net", "Objective-C", "Swift", "Javascript", "DevOps", ".NET", "Clojure", "Elixir", "Android", "COBOL", "D3", "ThreeJS", "C", "WordPress", "Django", "Spec", "Flask", "Ionic", "Cocoa", "Gulp", "Heroku", "UIKit", "Realm", "Parse", "CoreLocation", "MapKit", "WatchKit", "Spring", "AppKit.", "Matlab"]
+  @distances = [1, 5, 10, 25, 50]
   erb :search
 end
+
 get '/' do
 
  #Make API call to IP API to set default location

@@ -12,9 +12,7 @@ hr {
 }
 
 #top-nav {
-
-  background-color: #dddcdd;
-  height: 50px;
+  min-height: 75px;
 }
 
 #sub-nav {
@@ -84,70 +82,14 @@ hr {
 
 .mentor-displayed {
   border-left: 1px solid #eee;
-  height: auto;
-  right: 0;
-  position: absolute;
-  top: 100px;
-
+  position: relative;
+  top: 0;
 }
 
-/************ Buttons ************/
-
-.btn-primary {
-  color: #fff;
-  background-color: #0088ff;
-  border-color: #0088ff;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #0088ff;
-  border-color: #0088ff;
-}
-
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: normal;
-    text-align: center;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 6px 20px;
-    font-size: 12px;
-    line-height: 1.42857143;
-    border-radius: 20px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* letter-spacing: initial; */
-}
-
-/************ Label ************/
-
-#specialities img {
-  height: 30px;
-}
-
-#specialities .col-md-3 {
-  padding: 0;
-}
-
-#contact-info i {
-  margin-right: 5px;
-  margin-bottom: 10px;
-}
-
-.selected-mentor-name {
-  margin-top: 30px;
-}
-.mentor-displayed-top {
-  padding: 35px 0 5px 0;
+#map {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 15px;
 }
 
 /************ Label ************/
@@ -171,4 +113,93 @@ hr {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 1em;
+}
+
+/************ Buttons ************/
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 20px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    border-radius: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0088ff !important;
+  border-color: #0088ff !important;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0088ff;
+  border-color: #0088ff;
+}
+
+/************ Label ************/
+
+#specialities img {
+  height: 30px;
+}
+
+#specialities .col-md-3 {
+  padding: 0;
+}
+
+#contact-info i {
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.selected-mentor-name {
+  margin-top: 20px;
+}
+
+.mentor-displayed-top {
+  padding: 25px 0 25px 25px;
+  background: #f0f0f0;
+  margin-bottom: 25px;
+}
+
+/************ Forms ************/
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 15px 10px 15px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #f0f0f0;
+  background-image: none;
+  border: none;
+  border-radius: 20px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+    border-color: #0088FF;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(0, 136, 255);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(0, 136, 255);
 }

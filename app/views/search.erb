@@ -1,75 +1,102 @@
-<% @mentors_with_details.each do |mentor| %> 
+ <div class="col-md-12 mentor-card">
 
-  <div class="col-md-7 mentor-card">
-    <div class="row">
+    <% @mentors_with_details.each do |mentor| %> 
 
-      <div class="col-md-3 center">
-        <img src="images/default_user.png" class="card-avatar">
-        <span class="on-duty"></span>
-        <div class="clearfix"></div>
-        <button id="profile-btn" class="btn btn-primary">View Profile</button>
+    <div class="col-md-7 mentor-card">
+      <div class="row">
+
+        <div class="col-md-3 center">
+          <img src="images/default_user.png" class="card-avatar">
+          <span class="on-duty"></span>
+          <div class="clearfix"></div>
+          <button class="btn btn-primary">View Profile</button>
+        </div>
+
+
+        <div class="col-md-9">
+          <p>
+            <span class="mentor-name"><%= mentor["first_name"] %> <%= mentor["last_name"] %></span>
+            <% if mentor["admin"] %>
+              <span class="label label-success">Admin</span>
+            <% end %>
+          </p>
+          <p class="mentor-since">Mentor Since: <%= mentor["created_at"] %></p>
+          <p><%= mentor["bio"] %></p>
+          <hr>
+
+          <span class="contact">
+            <% if mentor["email"] && mentor["email"].length > 0 %> 
+              <i class="fa fa-envelope-o" aria-hidden="true"></i><%= mentor["email"] %>
+            <% end %>
+            <% if mentor["phone_number"] && mentor["phone_number"].length > 0 %> 
+              <i class="fa fa-phone" aria-hidden="true"></i> <%= mentor["phone_number"] %>
+            <% end %>
+          </span>
+
+        </div>
       </div>
+    </div>
+  <% end %>
 
-      <div class="col-md-9">
-        <p>
-          <span class="mentor-name"><%= mentor["first_name"] %> <%= mentor["last_name"] %></span>
-          <% if mentor["admin"] %>
-            <span class="label label-success">Admin</span>
-          <% end %>
-        </p>
-        <p class="mentor-since">Mentor Since: <%= mentor["created_at"] %></p>
-        <p><%= mentor["bio"] %></p>
-        <hr>
-        <span class="contact">
-          <% if mentor["email"] && mentor["email"].length > 0 %> 
-            <i class="fa fa-envelope-o" aria-hidden="true"></i><%= mentor["email"] %>
-          <% end %>
-          <% if mentor["phone_number"] && mentor["phone_number"].length > 0 %> 
-            <i class="fa fa-phone" aria-hidden="true"></i> <%= mentor["phone_number"] %>
-          <% end %>
-        </span>
+
+<div class="col-md-5 mentor-displayed">
+  <div class="row mentor-displayed-top">
+    <div class="col-md-7 selected-mentor-name">
+      <p><span class="mentor-name">Don Burks</span></p>
+      <p class="mentor-since">Mentor Since: August 2014</p>
+      <span class="label label-success">Admin</span>
+      <span class="label label-primary">On Duty</span>
+    </div>
+    <div class="col-md-5">
+      <div class="col-md-3 center">
+        <img src="images/default_user.png" class="card-avatar" alt="Mentor's Picture">
       </div>
     </div>
   </div>
-
-<% end %>
-
-<div class="col-md-5 mentor-displayed">
-
-  <div class="row mentor-displayed-top">
-  <div class="col-md-7 selected-mentor-name">
-    <p><span class="mentor-name">Don Burks</span></p>
-    <p class="mentor-since">Mentor Since: August 2014</p>
-    <span class="label label-success">Admin</span>
-    <span class="label label-primary">On Duty</span>
+  
+  <div id="specialities">
+    <div class="col-md-3"><img src="images/icons/ruby.svg"> Ruby</div>
+    <div class="col-md-3"><img src="images/icons/javascript.svg"> Javascript</div>
+    <div class="col-md-3"><img src="images/icons/node.js.svg"> Node.js</div>
+    <div class="col-md-3"><img src="images/icons/jquery.svg"> jQuery</div>
+    <div class="clearfix"></div>
   </div>
-  <div class="col-md-5">
-    <div class="col-md-3 center">
-    <img src="images/default_user.png" class="card-avatar">
+
+  <hr>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus earum quasi quod in, nihil dolorum mollitia aperiam magni enim! Aut numquam facere, odit. Dolorum earum, consequatur neque amet ipsum aliquam accusamus dolor quis deserunt necessitatibus nostrum nemo laborum optio saepe reiciendis quasi, a asperiores consequuntur ratione voluptatum quia officia blanditiis inventore. Saepe error, repudiandae voluptatem accusantium. Odit ducimus dolorum laudantium officiis unde saepe exercitationem, debitis reiciendis labore dolor rem nulla neque itaque dolore fugit animi magni non. Vitae, non maiores laborum doloremque exercitationem culpa ex, impedit tempora fugiat. Illo natus esse rerum fugiat neque ut, quaerat praesentium assumenda, odit laborum.</p>
+
+  <hr>
+
+  <div id="contact-info">
+    <div class="col-md-6"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> don@lighthouselabs.ca</div>
+    <div class="col-md-6"><i class="fa fa-phone fa-lg" aria-hidden="true"></i> (250) 000 0000</div>
+    <div class="col-md-6"><i class="fa fa-github fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-6"><i class="fa fa-skype fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-6"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-6"><i class="fa fa-slack fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="clearfix"></div>
   </div>
-  </div>
-</div>
-<hr>
-<div id="specialities">
-  <div class="col-md-3"><img src="images/icons/ruby.svg"> Ruby</div>
-  <div class="col-md-3"><img src="images/icons/javascript.svg"> Javascript</div>
-  <div class="col-md-3"><img src="images/icons/node.js.svg"> Node.js</div>
-  <div class="col-md-3"><img src="images/icons/jquery.svg"> jQuery</div>
+
+  <hr>
+
+  <div id="map"></div>
+
   <div class="clearfix"></div>
-</div>
-<hr>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus earum quasi quod in, nihil dolorum mollitia aperiam magni enim! Aut numquam facere, odit. Dolorum earum, consequatur neque amet ipsum aliquam accusamus dolor quis deserunt necessitatibus nostrum nemo laborum optio saepe reiciendis quasi, a asperiores consequuntur ratione voluptatum quia officia blanditiis inventore. Saepe error, repudiandae voluptatem accusantium. Odit ducimus dolorum laudantium officiis unde saepe exercitationem, debitis reiciendis labore dolor rem nulla neque itaque dolore fugit animi magni non. Vitae, non maiores laborum doloremque exercitationem culpa ex, impedit tempora fugiat. Illo natus esse rerum fugiat neque ut, quaerat praesentium assumenda, odit laborum.</p>
-<hr>
-<div id="contact-info">
-  <div class="col-md-6"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> don@lighthouselabs.cs</div>
-  <div class="col-md-6"><i class="fa fa-phone fa-lg" aria-hidden="true"></i> (250) 000 0000</div>
-  <div class="col-md-6"><i class="fa fa-github fa-lg" aria-hidden="true"></i> /donburks</div>
-  <div class="col-md-6"><i class="fa fa-skype fa-lg" aria-hidden="true"></i> /donburks</div>
-  <div class="col-md-6"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i> /donburks</div>
-  <div class="col-md-6"><i class="fa fa-slack fa-lg" aria-hidden="true"></i> /donburks</div>
-  <div class="clearfix"></div>
-</div>
-<hr>
-<p>Map</p>
-</div>
+  <script>
+    function initMap() {
+      var myLatLng = {lat: 49.2827, lng: -123.1207};
 
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 14,
+        center: myLatLng
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"async defer></script>
+</div>
