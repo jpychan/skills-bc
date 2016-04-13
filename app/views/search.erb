@@ -1,12 +1,10 @@
- <div class="col-md-12 mentor-card">
+ <div class="col-md-12">
 
+  <div class="col-md-7">
     <% @mentors_with_details.each do |mentor| %> 
-
-    <div class="col-md-7 mentor-card">
-      <div class="row">
-
+      <div class="row mentor-card">
         <div class="col-md-3 center">
-          <img src="images/default_user.png" class="card-avatar">
+          <img src="<%= mentor["avatar_url"] %>" class="card-avatar">
           <span class="on-duty"></span>
           <div class="clearfix"></div>
           <button class="btn btn-primary">View Profile</button>
@@ -21,7 +19,7 @@
             <% end %>
           </p>
           <p class="mentor-since">Mentor Since: <%= mentor["created_at"] %></p>
-          <p><%= mentor["bio"] %></p>
+          <p class="mentor-bio"><%= mentor["bio"] %></p>
           <hr>
 
           <span class="contact">
@@ -32,11 +30,10 @@
               <i class="fa fa-phone" aria-hidden="true"></i> <%= mentor["phone_number"] %>
             <% end %>
           </span>
-
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 
 
@@ -87,12 +84,12 @@
   <hr>
 
   <div id="contact-info">
-    <div class="col-md-6"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> don@lighthouselabs.ca</div>
-    <div class="col-md-6"><i class="fa fa-phone fa-lg" aria-hidden="true"></i> (250) 000 0000</div>
-    <div class="col-md-6"><i class="fa fa-github fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-6"><i class="fa fa-skype fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-6"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i> /donburks</div>
-    <div class="col-md-6"><i class="fa fa-slack fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-7"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i> don@lighthouselabs.ca</div>
+    <div class="col-md-5"><i class="fa fa-phone fa-lg" aria-hidden="true"></i> (250) 000 0000</div>
+    <div class="col-md-7"><i class="fa fa-github fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-5"><i class="fa fa-skype fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-7"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i> /donburks</div>
+    <div class="col-md-5"><i class="fa fa-slack fa-lg" aria-hidden="true"></i> /donburks</div>
     <div class="clearfix"></div>
   </div>
 
