@@ -1,0 +1,126 @@
+/* Blue: 0088ff */
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+nav {
+  background-color: #dddcdd;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+.mentor-card {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.card-avatar {
+  border-radius: 100%;
+  height: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.on-duty {
+  background-color: #0088ff;
+  border: 4px solid white;
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin-top: -30px;
+  z-index: 2;
+  border-radius: 100%;
+  position: relative;
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+.mentor-name {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mentor-since {
+  color: #777;
+  margin-top: -6px;
+  font-size: 12px;
+}
+
+.mentor-card i {
+  margin: 0 10px;
+}
+
+.mentor-card .label {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+/************ Buttons ************/
+
+.btn-primary {
+  color: #fff;
+  background-color: #0088ff;
+  border-color: #0088ff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0088ff;
+  border-color: #0088ff;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 20px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    border-radius: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* letter-spacing: initial; */
+}
+
+/************ Label ************/
+
+.label-success {
+    background-color: #7ac943;
+}
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 1em;
+}

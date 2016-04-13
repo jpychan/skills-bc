@@ -121,6 +121,10 @@ get '/search' do
       dist_km = calc_distance(user_lat, user_lng, result["location"][0], result["location"][1])
       dist_km <= distance
     end
+
+  @results
+  erb :search
+
   end
 
   puts @results.length
