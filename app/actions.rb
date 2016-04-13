@@ -48,7 +48,7 @@ get '/search' do
   end
 
   @results
-
+  erb :search
   end
 
 
