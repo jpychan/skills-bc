@@ -28,7 +28,7 @@ $(function() {
     mentorLng = parseFloat(div.attr('data-lng'))
 
     mentorDisplay.find('.mentor-name').text(mentorName);
-    mentorDisplay.find('.mentor-since').text("Mentor Since: " + mentorSince);
+    // mentorDisplay.find('.mentor-since').text("Mentor Since: " + mentorSince);
     mentorDisplay.find('.bio').text(mentorBio);
     mentorDisplay.find('.email').text(mentorEmail);
     mentorDisplay.find('.phone').text(mentorPhone);
@@ -39,11 +39,11 @@ $(function() {
     mentorDisplay.find('.card-avatar').prop('src', mentorAvatar);
 
     if (mentorAdmin == "false") {
-        mentorDisplay.find('label-success').hide();
+        mentorDisplay.find('.label-success').hide();
     }
 
     if (mentorOnDuty == "false") {
-        mentorDisplay.find('label-primary').hide();
+        mentorDisplay.find('.label-primary').hide();
     }
 
     if (mentorEmail == "") {
